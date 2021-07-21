@@ -1,0 +1,377 @@
+<HTML xmlns="http://www.w3.org/1999/html">
+
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-white.css">
+    <title>Insta Cart</title>
+    <script src="table2excel.js">
+
+    </script>
+
+</head>
+<style>
+    .grow-wrap {
+  /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+  display: grid;
+}
+.grow-wrap::after {
+  /* Note the weird space! Needed to preventy jumpy behavior */
+  content: attr(data-replicated-value) " ";
+
+  /* This is how textarea text behaves */
+  white-space: pre-wrap;
+
+  /* Hidden from view, clicks, and screen readers */
+  visibility: hidden;
+}
+.grow-wrap > textarea {
+  /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+  resize: none;
+
+  /* Firefox shows scrollbar on growth, you can hide like this. */
+  overflow: hidden;
+}
+.grow-wrap > textarea,
+.grow-wrap::after {
+  /* Identical styling required!! */
+  border: 1px solid black;
+  padding: 0.5rem;
+  font: inherit;
+
+  /* Place on top of each other */
+  grid-area: 1 / 1 / 2 / 2;
+}
+    .a{
+        font-style: normal;
+        font-weight: bold;
+        color: black;
+        font-family: Cambria;
+        text-align: center;
+        padding: 10px;
+    }
+    .e{
+        font-style: normal;
+        font-weight: bold;
+        border-radius: 20px;
+        border: black;
+        font-family: Cambria;
+    }
+    .d{
+        border: 3px solid black;
+        height: auto;
+        width: 50%;
+        font-family: Cambria;
+        font-weight: bold;
+    }
+    .s1{
+        background-color:cornflowerblue;
+        border-radius: 12px;
+        color: white;
+
+    }
+    .s2{
+        font-style:normal;
+        font-weight:bold;
+    }
+    tr{
+        width: auto;
+        font-style:normal;
+        font-weight: bold;
+        height: 10%;
+    }
+    table,td{
+        width: auto;
+        text-align: center;
+        border: 1px solid #dddddd;
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+    }
+
+    th{
+        /*position:-webkit-sticky;*/
+         position: sticky;
+         top:0;
+         border: 1px solid #dddddd;
+         background-color: cornflowerblue;
+         color: white;
+         height: 30px;
+         text-align: center;
+     }
+
+    .b{ position:relative;
+        right:-850px;
+        /*top:-150px;*/
+        color: cornflowerblue;
+        font-family: "MS PGothic";
+        margin: 5px;
+    }
+   
+    .c{
+        font-family:"MS PGothic";
+        font-style: normal;
+        font-weight: bold;
+        font-size: large;
+        color: black;
+        align-items: center;
+    }
+    .t1{
+        text-align: right;
+        font-family: "MS PGothic";
+        font-weight: bold;
+        position: relative;
+        right:-550px;
+        --link-hover-color:blue;
+    }
+
+    .bt{
+        margin: 10px;
+    }
+
+    .tb{
+        margin: 5px;
+    }
+
+</style>
+
+<body class="w3-theme-d5" style="border: 30px solid cornflowerblue">
+    <div class="container">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10">
+
+                    <section style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <h2 class="s2 a">CS527</h2>
+                                <br> <h2>INSTACART</h2>
+                            </div>
+                            <div class="col-4">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4"></div>
+                            <div class="col-4 b" style="font-weight: bold; font-size:small">
+                                Group-9 <br>
+                                Harsh Patel(hkp49) 
+                                &nbsp; &nbsp;
+                                Nairuti Shah(ns1241)
+                                &nbsp; &nbsp;
+                                Jaini Patel(jp1891)
+                                &nbsp; &nbsp;
+                                Kavya Patel(kp976)
+                            </div>
+                        </div>
+                    </section>
+                    
+                        <form method="POST" action="">
+
+
+                            <div class="row">
+                                <label class="a" style="padding: 3px;">Select Database :</label>
+                                <input type="radio" id="MySQL" name="database" value="mysql" checked="checked" class="bt">
+                                <label class="tb">MySQL</label>
+                                <!-- <img src="{{url_for('static',filename='mysql.png')}}" alt="not" width="50px" height="50px" class="bt"> -->
+
+                                <input type="radio" id="Redshift" name="database" value="redshift" class="bt"> 
+                                <label class="tb">Redshift</label>
+                                <input type="radio" id="mongodb" name="database" value="mongodb" class="bt">
+                                <label class="tb">Mongodb</label>
+                                <!-- <img src="{{url_for('static',filename='amazon-redshift.png')}}" width="50px" height="50px" class="bt"> -->
+                                <div class="grow-wrap">
+                                    <textarea placeholder="Enter Query here...." onInput="this.parentNode.dataset.replicatedValue = this.value"rows="5" cols="100" name="query"></textarea>
+                                </div>
+                                
+                                <input type="submit" value=" RUN " class="btn btn-light bt">
+                                <input type="reset" value="CLEAR ALL" class="btn btn-danger bt">
+
+                                 <a href="https://www.w3schools.com/sql/" target="_blank" class="t1">Stuck at query?click me</a>
+
+
+                            </div>
+
+                            <div class="row"></div>
+
+                            <div class="row">
+                                <div class="col-2">
+                                </div>
+                                <div class="col-8 c">
+                                    <ul style="list-style-type: disc" >
+                                    <li> Time Elapsed   :    {{time}}</li>
+
+                                    <li> Database      :   {{database}}</li>
+
+                                    <li>Query Executed :   {{query}}</li>
+
+                                    <li> Rows affected  :    {{head}}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-2">
+                                </div>
+                            </div>
+
+                            <div class="row" style="height:180px; width:auto; overflow-y:auto;">
+                                <table id="example" class="tb">
+                                    {% if error == "True" -%}
+                                        <div class="d">
+                                    <!-- Empty Query or Invalid Query. Please pass valid Query. -->
+                                        {{ err }}
+
+                                        </div>
+                                    {% elif error == "False" -%}
+                                        {{mongo|safe}}
+                                        {% if data -%}
+                                        <tr style="background:cornflowerblue ;color:white">
+                                            {% for tableHeader in headings %}
+                                                <th class="head">{{ tableHeader }}</th>
+                                            {% endfor %}
+                                        </tr>
+                                        {% for row in data %}
+                                        <tr>
+                                            {% for i in row %}
+                                            <td>{{i}}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        {% endfor %}
+
+                                        {% endif %}
+
+                                    {% else %}
+
+                                    {%- endif %}
+                                </table>
+                            </div>
+                        </form>
+
+                        <div class="row"></div>
+
+                            <div class="row" style="margin-bottom: 20px; margin-top: 10px">
+                                <div class="col-3">
+                                    <button onclick="exportTableToCSV('members.csv')" class="btn btn-light"> CSV </button>
+                                </div>
+                                <div class="col-3">
+                                    <button onclick="makepdf()" class="btn btn-light">PDF</button>
+                                </div>
+                                <div class="col-3">
+                                    <button onclick="exportTableToExcel('example')" class="btn btn-light">Excel</button>
+                                </div>
+
+
+                            </div>
+                <div class="row" style="margin-bottom: 20px; margin-top: 10px">
+                <div class="col-3">
+                                    <a href="showpdf" class="btn btn-light">History</a>
+                                </div>
+                                <div class="col-3"  >
+                                     <a href="https://erdplus.com/edit-diagram/e8d01448-f30c-4a1b-ad31-88ff7469650e" target="_blank" class="btn btn-light">ER_Diagram</a>
+                                </div>
+                </div>
+                        <!--<button id="downloadtoexcel">export to excel</button>
+                        <script>
+                                document.getElementById('downloadtoexcel').addEventListener('click',function () {
+                                    var table2excel=new Table2Excel();
+                                    table2excel.export(document.querySelectorAll("#convert"));
+                                });
+                            </script> -->
+                        
+                    </section>
+
+
+            <script>
+                function makepdf(){
+                    var printMe=document.getElementById('example');
+                    var wme=window.open("","","width:700,height=900");
+                    wme.document.write(printMe.outerHTML);
+                    wme.document.close();
+                    wme.focus();
+                    wme.print();
+                    wme.close()
+                }
+            </script>
+            <script>
+            function downloadCSV(csv, filename) {
+                var csvFile;
+                var downloadLink;
+
+                // CSV file
+                csvFile = new Blob([csv], {type: "text/csv"});
+
+                // Download link
+                downloadLink = document.createElement("a");
+
+                // File name
+                downloadLink.download = filename;
+
+                // Create a link to the file
+                downloadLink.href = window.URL.createObjectURL(csvFile);
+
+                // Hide download link
+                downloadLink.style.display = "none";
+
+                // Add the link to DOM
+                document.body.appendChild(downloadLink);
+
+                // Click download link
+                downloadLink.click();
+            }
+            function exportTableToCSV(filename) {
+                var csv = [];
+                var rows = document.querySelectorAll("table tr");
+
+                for (var i = 0; i < rows.length; i++) {
+                    var row = [], cols = rows[i].querySelectorAll("td, th");
+
+                    for (var j = 0; j < cols.length; j++)
+                        row.push(cols[j].innerText);
+
+                    csv.push(row.join(","));
+                }
+
+                // Download CSV file
+                downloadCSV(csv.join("\n"), filename);
+            }
+            </script>
+            <script>
+                function exportTableToExcel(tableID, filename = ''){
+                var downloadLink;
+                var dataType = 'application/vnd.ms-excel';
+                var tableSelect = document.getElementById(tableID);
+                var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+                // Specify file name
+                filename = filename?filename+'.xls':'excel_data.xls';
+
+                // Create download link element
+                downloadLink = document.createElement("a");
+
+                document.body.appendChild(downloadLink);
+
+                if(navigator.msSaveOrOpenBlob){
+                    var blob = new Blob(['\ufeff', tableHTML], {
+                        type: dataType
+                    });
+                    navigator.msSaveOrOpenBlob( blob, filename);
+                }else{
+                    // Create a link to the file
+                    downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                    // Setting the file name
+                    downloadLink.download = filename;
+
+                    //triggering the function
+                    downloadLink.click();
+                }
+            }
+            </script>
+        </div>
+        <div class="col-1"></div>
+
+    </div>
+    </div>
+</body>
+
+</HTML>
